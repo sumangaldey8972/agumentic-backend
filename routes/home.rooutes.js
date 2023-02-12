@@ -126,7 +126,7 @@ app.post("/product", async (req, res) => {
 app.put("/product/:id", async (req, res) => {
   try {
     let { id } = req.params;
-    let { icon, title, headline, description, productimage } = req.body;
+    let { icon, title, headline, description, productimage, brief } = req.body;
     let updateProduct = await productModel.findOneAndUpdate(
       { _id: id },
       {
@@ -135,6 +135,7 @@ app.put("/product/:id", async (req, res) => {
         headline: headline,
         description: description,
         productimage: productimage,
+        brief: brief
       },
       { new: true }
     );
